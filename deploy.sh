@@ -10,7 +10,8 @@ yarn build
 cd dist
 
 # 如果你要部署到自定义域名
-# echo 'www.example.com' > CNAME
+touch CNAME
+echo 'end-work.trycatchyou.com' > CNAME
 
 git init
 git add -A
