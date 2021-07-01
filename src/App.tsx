@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './App.css'
 
 function add2(n: number) {
   return n > 9 ? n : `0${n}`
 }
-function getTimStr(endTime: number, cb?: Function) {
+function getTimStr(endTime: number, cb?: Function):string {
   console.log('getTimStr')
   let diff = endTime - Date.now()  
   let retStr = '00:00:00'
@@ -20,22 +20,26 @@ function getTimStr(endTime: number, cb?: Function) {
 }
 
 
-let timer:any = null
+
 
 function App() {
+  const timerRef = useRef<number>()
   const nowDate = new Date()
   const endTime = new Date(`${nowDate.getFullYear()}/${nowDate.getMonth() + 1}/${nowDate.getDate()} 18:30:00`).getTime()
-  const [timeStr, setTimeStr] = useState<string>(getTimStr(endTime))
+
+  const initTimeStr = getTimStr(endTime)
+  const [timeStr, setTimeStr] = useState<string>(initTimeStr)
   
   useEffect(() => {
-    clearInterval(timer)
-    timer = setInterval(() => {
+    clearInterval(timerRef.current)
+    timerRef.current = window.setInterval(() => {
+      console.log(timerRef.current)
       setTimeStr(getTimStr(endTime, () => {
-        clearInterval(timer)
+        window.clearInterval(timerRef.current)
       }))
     }, 1000)
     return () => {
-      clearInterval(timer)
+      window.clearInterval(timerRef.current)
     }
   }, []) // 传入一个空数组 [], 只会调用一次，相当于 componentDidMount 和 componentWillUnmount
     
