@@ -10,7 +10,7 @@
   align-items: center;
 }
 .time-box {
-  font-size: 120px;
+  font-size: calc((100vw/20) + 12px);
   font-family: test;
   padding-bottom: 120px;
   color: #ffffff;
