@@ -19,16 +19,13 @@ function getTimStr(endTime: number, cb?: Function):string {
   return retStr
 }
 
-
-
+const nowDate = new Date()
+const endTime = new Date(`${nowDate.getFullYear()}/${nowDate.getMonth() + 1}/${nowDate.getDate()} 18:30:00`).getTime()
+const initTimeStr = getTimStr(endTime)
 
 function App() {
   const timerRef = useRef<number>()
-  const nowDate = new Date()
-  const endTime = new Date(`${nowDate.getFullYear()}/${nowDate.getMonth() + 1}/${nowDate.getDate()} 18:30:00`).getTime()
-
-  const initTimeStr = getTimStr(endTime)
-  const [timeStr, setTimeStr] = useState<string>(initTimeStr)
+  const [timeStr, setTimeStr] = useState<string>(initTimeStr) // 只会初始化一次
   
   useEffect(() => {
     clearInterval(timerRef.current)
