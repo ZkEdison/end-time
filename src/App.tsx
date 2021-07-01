@@ -20,8 +20,9 @@ function getTimStr(endTime: number, cb?: Function) {
 }
 
 
+let timer:any = null
+
 function App() {
-  let timer:any = null
   const nowDate = new Date()
   const endTime = new Date(`${nowDate.getFullYear()}/${nowDate.getMonth() + 1}/${nowDate.getDate()} 18:30:00`).getTime()
   const [timeStr, setTimeStr] = useState<string>(getTimStr(endTime))

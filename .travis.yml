@@ -7,9 +7,9 @@ cache: npm
 script: npm run build
 
 deploy:
-provider: pages
-skip_cleanup: true
-github_token: $Travis_Token
-local_dir: dist
-on:
-  branch: main
+  provider: pages
+  skip_cleanup: true
+  github_token: $Travis_Token  # Set in the settings page of your repository, as a secure variable
+  local_dir: dist
+  on:
+    branch: main
