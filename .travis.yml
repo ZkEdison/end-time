@@ -4,7 +4,11 @@ node_js:
 
 cache: npm
 
-script: npm run build
+script: 
+  - npm run build
+  - cd dist
+  - touch CNAME
+  - echo 'end-work.trycatchyou.com' > CNAME
 
 deploy:
   provider: pages
