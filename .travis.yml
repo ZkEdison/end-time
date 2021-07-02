@@ -8,7 +8,7 @@ script:
   - npm run build
   - cd dist
   - touch CNAME
-  - echo 'end-work.trycatchyou.com' > CNAME
+  - echo 'c-end-work.trycatchyou.com' > CNAME
 
 deploy:
   provider: pages
