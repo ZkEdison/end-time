@@ -24,10 +24,12 @@ const endTime = new Date(`${nowDate.getFullYear()}/${nowDate.getMonth() + 1}/${n
 const initTimeStr = getTimStr(endTime)
 
 function App() {
+  console.log('App page')
   const timerRef = useRef<number>()
   const [timeStr, setTimeStr] = useState<string>(initTimeStr) // 只会初始化一次
   
   useEffect(() => {
+    console.log('App useEffect')
     clearInterval(timerRef.current)
     timerRef.current = window.setInterval(() => {
       console.log(timerRef.current)
