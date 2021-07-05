@@ -24,7 +24,7 @@ const endTime = new Date(`${nowDate.getFullYear()}/${nowDate.getMonth() + 1}/${n
 const initTimeStr = getTimStr(endTime)
 
 function App() {
-  console.log('App page')
+  console.log('App page', Promise)
   const timerRef = useRef<number>()
   const [timeStr, setTimeStr] = useState<string>(initTimeStr) // 只会初始化一次
   

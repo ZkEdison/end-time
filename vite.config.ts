@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [
     reactRefresh(),
     legacy({
-      targets: 'es2015'
+      targets: ['defaults']
     })
   ],
 })
