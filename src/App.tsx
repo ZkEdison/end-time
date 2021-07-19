@@ -26,8 +26,8 @@ interface Sentences {
   from: string
 }
 interface SentencesResponse {
-  content: number
-  author: string
+  content?: number
+  author?: string
 }
 
 
@@ -49,7 +49,7 @@ function App() {
   console.log('App page', Promise)
   const timerRef = useRef<number>()
   const [timeStr, setTimeStr] = useState<string>(initTimeStr) // 只会初始化一次
-  const [sentences, setSentences] = useState<SentencesResponse>({name: '', from: ''})
+  const [sentences, setSentences] = useState<SentencesResponse>({})
 
 
   useEffect(() => {
