@@ -26,18 +26,17 @@ interface Sentences {
   from: string
 }
 interface SentencesResponse {
-  code: number
-  message: string
-  result: Sentences
+  content: number
+  author: string
 }
 
 
 function getSentences() {
-  return axios.get<SentencesResponse>('http://poetry.apiopen.top/sentences').then(res => {
-    if (res.data.code === 200) {
-      return res.data.result
+  return axios.get<SentencesResponse>('https://v1.jinrishici.com/all.json').then(res => {
+    if (res.data) {
+      return res.data
     }
-    throw new Error(res.data.message)
+    throw new Error('error')
   })
 }
 
@@ -50,7 +49,7 @@ function App() {
   console.log('App page', Promise)
   const timerRef = useRef<number>()
   const [timeStr, setTimeStr] = useState<string>(initTimeStr) // 只会初始化一次
-  const [sentences, setSentences] = useState<Sentences>({name: '', from: ''})
+  const [sentences, setSentences] = useState<SentencesResponse>({name: '', from: ''})
 
 
   useEffect(() => {
@@ -76,8 +75,8 @@ function App() {
   return (
     <div className="app-bg">
       <div className="sentence-box">
-        <div className="name">{sentences.name}</div>
-        <div className="name-from">-{sentences.from}</div>
+        <div className="name">{sentences.content}</div>
+        <div className="name-from">-{sentences.author}</div>
       </div>
       <div className="time-box">
       {timeStr}
