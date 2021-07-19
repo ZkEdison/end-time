@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import axios from 'axios'
 import './App.css'
 
 function add2(n: number) {
@@ -19,6 +20,28 @@ function getTimStr(endTime: number, cb?: Function):string {
   return retStr
 }
 
+
+interface Sentences {
+  name: string
+  from: string
+}
+interface SentencesResponse {
+  code: number
+  message: string
+  result: Sentences
+}
+
+
+function getSentences() {
+  return axios.get<SentencesResponse>('http://poetry.apiopen.top/sentences').then(res => {
+    if (res.data.code === 200) {
+      return res.data.result
+    }
+    throw new Error(res.data.message)
+  })
+}
+
+
 const nowDate = new Date()
 const endTime = new Date(`${nowDate.getFullYear()}/${nowDate.getMonth() + 1}/${nowDate.getDate()} 18:30:00`).getTime()
 const initTimeStr = getTimStr(endTime)
@@ -27,9 +50,16 @@ function App() {
   console.log('App page', Promise)
   const timerRef = useRef<number>()
   const [timeStr, setTimeStr] = useState<string>(initTimeStr) // 只会初始化一次
-  
+  const [sentences, setSentences] = useState<Sentences>({name: '', from: ''})
+
+
   useEffect(() => {
     console.log('App useEffect')
+
+    getSentences().then(res => {
+      setSentences(res)
+    }).catch(e => {})
+
     clearInterval(timerRef.current)
     timerRef.current = window.setInterval(() => {
       console.log(timerRef.current)
@@ -45,6 +75,10 @@ function App() {
 
   return (
     <div className="app-bg">
+      <div className="sentence-box">
+        <div className="name">{sentences.name}</div>
+        <div className="name-from">-{sentences.from}</div>
+      </div>
       <div className="time-box">
       {timeStr}
       </div>

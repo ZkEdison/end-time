@@ -6,8 +6,13 @@
   background-position: center center;
   background-size: cover;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  /* justify-content: center; */
   align-items: center;
+}
+.app-bg  > * {
+  flex: 0 0 33%;
+  box-sizing: border-box;
 }
 .time-box {
   font-size: calc((100vw/20) + 12px);
@@ -15,4 +20,16 @@
   padding-bottom: 120px;
   color: #ffffff;
   letter-spacing: 0.2em;
+}
+.sentence-box {
+  align-self: flex-end;
+  padding: 2em 3em;
+  color: #ffffff;
+}
+.sentence-box  .name {
+  padding-bottom: 0.5em;
+}
+.sentence-box  .name-from {
+  text-align: right;
+  font-size: 13px;
 }

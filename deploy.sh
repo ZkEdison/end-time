@@ -11,7 +11,7 @@ cd dist
 
 # 如果你要部署到自定义域名
 touch CNAME
-echo 'end-work.trycatchyou.com' > CNAME
+echo 'c-end-work.trycatchyou.com' > CNAME
 
 git init
 git add -A
