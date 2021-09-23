@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [
     reactRefresh(),
     legacy({
-      targets: ['default']
+      targets: ['defaults']
     })
   ],
 })
