@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [
     reactRefresh(),
     legacy({
-      targets: ['es2015','chrome58','edge16']
+      targets: ['chrome58','edge16']
     })
   ],
 })
