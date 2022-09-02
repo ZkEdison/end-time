@@ -42,7 +42,7 @@ function getSentences() {
 
 
 const nowDate = new Date()
-const endTime = new Date(`${nowDate.getFullYear()}/${nowDate.getMonth() + 1}/${nowDate.getDate()} 18:30:00`).getTime()
+const endTime = new Date(`2022/10/31 18:30:00`).getTime()
 const initTimeStr = getTimStr(endTime)
 
 function App() {
