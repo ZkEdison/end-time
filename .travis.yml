@@ -7,8 +7,6 @@ cache: npm
 script: 
   - npm run build
   - cd dist
-#   - touch CNAME
-#   - echo 'c-end-work.trycatchyou.com' > CNAME
 
 deploy:
   provider: pages
